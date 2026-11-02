@@ -1,0 +1,42 @@
+{
+  "name": "eastmoney-market-data",
+  "version": "0.1.0",
+  "private": true,
+  "description": "东方财富 A 股公开行情、资金分布和只读 MCP 服务",
+  "type": "module",
+  "engines": {
+    "node": ">=24.15.0 <25"
+  },
+  "scripts": {
+    "prestart": "npm run web:build",
+    "start": "node src/http.ts",
+    "web": "npm start",
+    "web:build": "node scripts/build-web.ts",
+    "quote": "node src/cli.ts quote",
+    "funds": "node src/cli.ts funds",
+    "snapshot": "node src/cli.ts snapshot",
+    "intraday": "node src/intraday-cli.ts data",
+    "chart": "npm start",
+    "chart:export": "node src/intraday-cli.ts chart",
+    "batch": "node src/batch-cli.ts",
+    "config:schema": "node scripts/generate-config-schema.ts",
+    "mcp": "node src/mcp.ts",
+    "typecheck": "tsc --noEmit",
+    "pretest": "npm run web:build",
+    "test": "node --test test/*.test.ts",
+    "check": "npm run typecheck && npm test",
+    "smoke": "node scripts/smoke.ts"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/server": "2.4.0",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@modelcontextprotocol/client": "2.4.0",
+    "@types/jsdom": "30.0.0",
+    "@types/node": "^24.0.0",
+    "esbuild": "0.28.2",
+    "jsdom": "30.1.3",
+    "typescript": "6.0.3"
+  }
+}

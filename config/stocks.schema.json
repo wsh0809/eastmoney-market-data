@@ -1,0 +1,182 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "stocks": {
+      "minItems": 1,
+      "maxItems": 100,
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "symbol": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 12
+          },
+          "label": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 100
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "enabled": {
+            "default": true,
+            "type": "boolean"
+          },
+          "basicInfo": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 100
+                  },
+                  "market": {
+                    "type": "string",
+                    "enum": [
+                      "SH",
+                      "SZ",
+                      "BJ"
+                    ]
+                  },
+                  "securityType": {
+                    "type": "string",
+                    "enum": [
+                      "stock",
+                      "etf"
+                    ]
+                  },
+                  "industry": {
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "source": {
+                    "type": "string",
+                    "const": "eastmoney"
+                  },
+                  "fetchedAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z))$"
+                  }
+                },
+                "required": [
+                  "name",
+                  "market",
+                  "securityType",
+                  "source",
+                  "fetchedAt"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "symbol"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "request": {
+      "default": {},
+      "type": "object",
+      "properties": {
+        "intervalMs": {
+          "default": 1000,
+          "type": "integer",
+          "minimum": 500,
+          "maximum": 60000
+        }
+      },
+      "additionalProperties": false
+    },
+    "analysis": {
+      "default": {},
+      "type": "object",
+      "properties": {
+        "priceChangeThresholdPercent": {
+          "default": 3,
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 100
+        },
+        "mainFlowThresholdPercent": {
+          "default": 5,
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 100
+        },
+        "highTurnoverThresholdPercent": {
+          "default": 10,
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 1000
+        },
+        "maxSnapshotAgeSeconds": {
+          "default": 180,
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 604800
+        }
+      },
+      "additionalProperties": false
+    },
+    "output": {
+      "default": {},
+      "type": "object",
+      "properties": {
+        "directory": {
+          "default": "../reports",
+          "type": "string",
+          "minLength": 1
+        },
+        "formats": {
+          "default": [
+            "json",
+            "markdown"
+          ],
+          "minItems": 1,
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "json",
+              "markdown"
+            ]
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "stocks"
+  ],
+  "additionalProperties": false
+}

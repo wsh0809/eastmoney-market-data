@@ -1,0 +1,125 @@
+{
+  "$schema": "./stocks.schema.json",
+  "stocks": [
+    {
+      "symbol": "600127",
+      "label": "金健米业",
+      "enabled": true,
+      "basicInfo": {
+        "name": "金健米业",
+        "market": "SH",
+        "securityType": "stock",
+        "industry": "农产品加工",
+        "source": "eastmoney",
+        "fetchedAt": "2026-11-02T06:05:51.190Z"
+      }
+    },
+    {
+      "symbol": "600519",
+      "label": "贵州茅台",
+      "enabled": true,
+      "basicInfo": {
+        "name": "贵州茅台",
+        "market": "SH",
+        "securityType": "stock",
+        "industry": "白酒Ⅱ",
+        "source": "eastmoney",
+        "fetchedAt": "2026-11-02T06:05:51.190Z"
+      }
+    },
+    {
+      "symbol": "000001",
+      "label": "平安银行",
+      "enabled": true,
+      "basicInfo": {
+        "name": "平安银行",
+        "market": "SZ",
+        "securityType": "stock",
+        "industry": "银行Ⅱ",
+        "source": "eastmoney",
+        "fetchedAt": "2026-11-02T06:05:51.190Z"
+      }
+    },
+    {
+      "symbol": "600664",
+      "label": "哈药股份",
+      "enabled": true,
+      "basicInfo": {
+        "name": "哈药股份",
+        "market": "SH",
+        "securityType": "stock",
+        "industry": "化学制药",
+        "source": "eastmoney",
+        "fetchedAt": "2026-11-02T06:05:51.190Z"
+      }
+    },
+    {
+      "symbol": "603618",
+      "label": "杭电股份",
+      "enabled": true,
+      "basicInfo": {
+        "name": "杭电股份",
+        "market": "SH",
+        "securityType": "stock",
+        "industry": "电网设备",
+        "source": "eastmoney",
+        "fetchedAt": "2026-11-02T06:05:51.190Z"
+      }
+    },
+    {
+      "symbol": "000519",
+      "label": "中兵红箭",
+      "enabled": true,
+      "basicInfo": {
+        "name": "中兵红箭",
+        "market": "SZ",
+        "securityType": "stock",
+        "industry": "地面兵装Ⅱ",
+        "source": "eastmoney",
+        "fetchedAt": "2026-11-02T06:05:51.190Z"
+      }
+    },
+    {
+      "symbol": "603127",
+      "label": "昭衍新药",
+      "enabled": true,
+      "basicInfo": {
+        "name": "昭衍新药",
+        "market": "SH",
+        "securityType": "stock",
+        "industry": "医疗服务",
+        "source": "eastmoney",
+        "fetchedAt": "2026-11-02T06:05:51.190Z"
+      }
+    },
+    {
+      "symbol": "159502",
+      "label": "标普生物科技ETF嘉实",
+      "enabled": true,
+      "basicInfo": {
+        "name": "标普生物科技ETF嘉实",
+        "market": "SZ",
+        "securityType": "etf",
+        "industry": null,
+        "source": "eastmoney",
+        "fetchedAt": "2026-11-02T06:05:51.190Z"
+      }
+    }
+  ],
+  "request": {
+    "intervalMs": 1000
+  },
+  "analysis": {
+    "priceChangeThresholdPercent": 3,
+    "mainFlowThresholdPercent": 5,
+    "highTurnoverThresholdPercent": 10,
+    "maxSnapshotAgeSeconds": 180
+  },
+  "output": {
+    "directory": "../reports",
+    "formats": [
+      "json",
+      "markdown"
+    ]
+  }
+}
